@@ -1,0 +1,19 @@
+{
+    "server" : {
+        "port": 3000
+    },
+
+    "db" :{
+        "host": "localhost",
+        "port": 8889,
+        "user": "root",
+        "password": "root",
+        "database": "cn_web_404",
+        "charset": "utf8_general_ci"
+    },
+
+    "dummy" : {
+        "numUser": 200,
+        "numProduct": 1000
+    }
+}

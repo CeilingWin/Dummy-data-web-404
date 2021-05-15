@@ -1,0 +1,17 @@
+{
+  "name": "tool",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dummy.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node dummy.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "config": "^3.3.6",
+    "faker": "^5.5.3",
+    "mysql": "^2.18.1"
+  }
+}
