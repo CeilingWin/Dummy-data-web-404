@@ -71,7 +71,7 @@ var dummyData = ()=>{
         let name = faker.commerce.productName();
         let type = listType[faker.datatype.number({min:0,max:listType.length-1})];
         let price = Math.round(Math.random()*10000000) + 1;
-        let quantity = Math.round(Math.random()*100) + 100;
+        let quantity = Math.round(Math.random()*100)+100;
         let userID = faker.datatype.number({min:1,max:numUser});
         let imgUrl = faker.internet.url();
         let description = faker.commerce.productDescription();
