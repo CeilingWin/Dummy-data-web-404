@@ -27,7 +27,7 @@ connection.query('USE ??',[config.get('db.database')],(err)=>{
     else dropAllTable();
 });
 var dropAllTable = ()=>{
-    let listTables = ['Product','User'];
+    let listTables = ['Bill','Product','User'];
     listTables.forEach((table,index)=>{
         connection.query('DROP TABLE '+table,(err)=>{
             if (!err) 
@@ -71,7 +71,7 @@ var dummyData = ()=>{
         let name = faker.commerce.productName();
         let type = listType[faker.datatype.number({min:0,max:listType.length-1})];
         let price = Math.round(Math.random()*10000000) + 1;
-        let quantity = Math.round(Math.random()*100);
+        let quantity = Math.round(Math.random()*100) + 100;
         let userID = faker.datatype.number({min:1,max:numUser});
         let imgUrl = faker.internet.url();
         let description = faker.commerce.productDescription();
@@ -81,5 +81,19 @@ var dummyData = ()=>{
         });
     }
     console.log("dummied product");
+
+    // dummy Bill
+    let numBill = config.get('dummy.numBill');
+    for (let i=0;i<numBill;i++){
+        let userID = faker.datatype.number({min:1,max:numUser});
+        let productID = faker.datatype.number({min:1,max:numProduct});
+        let quantity = faker.datatype.number({min:1,max:100});
+        let pay = faker.datatype.number({min:0,max:0});
+        connection.query({
+            sql: "INSERT INTO Bill(userID,productID,quantity,pay) VALUES(?,?,?,?)" ,
+            values: [userID,productID,quantity,pay]
+        });
+    }
+    console.log("dummied bill");
     connection.end();
 }

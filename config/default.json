@@ -14,6 +14,7 @@
 
     "dummy" : {
         "numUser": 200,
-        "numProduct": 1000
+        "numProduct": 1000,
+        "numBill": 1000
     }
 }
