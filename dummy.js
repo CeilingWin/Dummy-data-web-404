@@ -67,13 +67,16 @@ var dummyData = ()=>{
     let numProduct = config.get('dummy.numProduct');
     listAttributes = ['name', 'type','price','quantity','userID','imgUrl','description'];
     let listType = ['phone','tv','pc','switch','laptop'];
+    let imageUrl = fs.readFileSync('image_url.txt','utf-8');
+    let listUrl = imageUrl.split('\n');
+    console.log(listUrl);
     for (let i=0;i<numProduct;i++){
         let name = faker.commerce.productName();
         let type = listType[faker.datatype.number({min:0,max:listType.length-1})];
         let price = Math.round(Math.random()*10000000) + 1;
         let quantity = Math.round(Math.random()*100)+100;
         let userID = faker.datatype.number({min:1,max:numUser});
-        let imgUrl = faker.internet.url();
+        let imgUrl = listUrl[i%listUrl.length];
         let description = faker.commerce.productDescription();
         connection.query({
             sql: "INSERT INTO Product(name,type,price,quantity,userID,imgUrl,description) VALUES (?,?,?,?,?,?,?)",
